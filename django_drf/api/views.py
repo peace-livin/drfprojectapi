@@ -9,4 +9,4 @@ def studentsView(request):
         'name':'akshay',
         'class':'IT'
     }
-    return JsonResponce(students)
+    return JsonResponse(students)
