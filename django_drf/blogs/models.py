@@ -13,7 +13,7 @@ class Blog(models.Model):
 
 class Comment(models.Model):
     blog = models.ForeignKey(Blog,on_delete=models.CASCADE,related_name='comments')
-    commennt = models.TextField()
+    comment = models.TextField()
 
     def __str__(self):
-        return self.commennt
+        return self.comment
