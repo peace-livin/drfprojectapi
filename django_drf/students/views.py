@@ -3,7 +3,7 @@ from django.http import HttpResponse
 # Create your views here.
 
 def students(request):
-    students =[{'id':1, 'name':'akshay','age':25 }]
+    students =['This is api project']
         
     
      

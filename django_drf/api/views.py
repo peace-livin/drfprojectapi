@@ -91,7 +91,8 @@ class employeesDetail(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 '''
 
-# use mixin class for easy implementation
+'''
+# use mixins class for easy implementation
 
 class Employees(mixins.ListModelMixin,mixins.CreateModelMixin,generics.GenericAPIView):
     queryset = Employee.objects.all()
@@ -102,7 +103,7 @@ class Employees(mixins.ListModelMixin,mixins.CreateModelMixin,generics.GenericAP
 
     def post(self,request):
         return self.create(request)
-
+#mixin class for get,put,delete
 class employeesDetail(mixins.RetrieveModelMixin,mixins.UpdateModelMixin,mixins.DestroyModelMixin,generics.GenericAPIView):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
@@ -116,7 +117,20 @@ class employeesDetail(mixins.RetrieveModelMixin,mixins.UpdateModelMixin,mixins.D
     def delete(self,request,pk):
         return self.destroy(request,pk)
 
-    
-    
-        
+    '''
 
+# List Create APIView
+# generis view
+    
+class Employees(generics.ListCreateAPIView):
+
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
+
+
+#Genirics
+class employeesDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
+    lookup_field = 'pk'
+    
