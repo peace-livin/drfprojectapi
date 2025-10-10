@@ -12,6 +12,7 @@ from django.shortcuts import render,get_object_or_404
 from blogs.models import Blog,Comment
 from blogs.serializers import BlogSerializer,CommentSerializer
 from .pagination import CustomPagination
+from employees.filters import EmployeeFilter
 
 @api_view(['GET','POST'])
 def studentsView(request):
@@ -179,7 +180,7 @@ class EmployeesViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
     pagination_class = CustomPagination
-    filterset_fields =['designation']
+    filterset_class = EmployeeFilter
 
 
 
